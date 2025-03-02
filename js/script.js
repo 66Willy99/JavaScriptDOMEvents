@@ -90,10 +90,10 @@ formulario.addEventListener('submit', function(evento) {
     const {nombre, email, mensaje} = datos;
 
     if(nombre === '' || email === '' || mensaje === '') {
-        monstrarError("Todos los campos son obligatorios");
+        monstrarAlerta("Todos los campos son obligatorios", 'error');
         return;
     }else {
-        monstrarEnvio("Mensaje enviado correctamente");
+        monstrarAlerta("Mensaje enviado correctamente");
     }
 
     //Enviar el formulario
@@ -108,29 +108,20 @@ function leerTexto(e){
     // console.log(datos);
 }
 
-// Mostrar Error
-function monstrarError(mensaje) {
-    const error= document.createElement('P');
-    error.textContent = mensaje;
-    error.classList.add('error');
-    formulario.appendChild(error);
+// Mostrar Alerta
+function monstrarAlerta(mensaje, error = null) {
+    const alerta = document.createElement('P');
+    alerta.textContent = mensaje;
+    if(error) {
+        alerta.classList.add('error');
+    } else {
+        alerta.classList.add('correcto');
+    }
+    formulario.appendChild(alerta);
 
-    //Eliminar el mensaje de error después de 5 segundos
+    //Eliminar la alerta después de 5 segundos
     setTimeout(() => {
-        error.remove();
-    }, 5000);
-}
-
-// Mostrar envio correcto
-function monstrarEnvio(mensaje) {
-    const success= document.createElement('P');
-    success.textContent = mensaje;
-    success.classList.add('correcto');
-    formulario.appendChild(success);
-
-    //Eliminar el mensaje de error después de 5 segundos
-    setTimeout(() => {
-        success.remove();
+        alerta.remove();
     }, 5000);
 }
 
