@@ -35,21 +35,61 @@ console.log(nuevoEnlace);
 
 // Eventos
 
-console.log(1);
-window.addEventListener('load', function() { // este espera a que se descargue todo
-    console.log(2);
+// console.log(1);
+// window.addEventListener('load', function() { // este espera a que se descargue todo
+//     console.log(2);
+// });
+
+// window.onload = function() {
+//     console.log(3);
+// }
+// document.addEventListener('DOMContentLoaded', function() { // este espera a que se descargue solamente el HTML
+//     console.log(4);
+// });
+
+
+// console.log(5);
+
+// window.onscroll = function(evento) {
+//     console.log(evento);
+// }
+
+// Seleccionar elementos y asociarles un evento
+
+const btnEnviar = document.querySelector('.boton--primario');
+btnEnviar.addEventListener('click', function(evento) {
+    console.log(evento);
+    evento.preventDefault(); // previene la acción por defecto
+    // Validar un formulario
+
+
+
+    console.log('Enviando formulario');
 });
 
-window.onload = function() {
-    console.log(3);
+// Eventos de los Inputs y Textarea
+
+const datos = {
+    nombre: '',
+    email: '',
+    mensaje: ''
 }
-document.addEventListener('DOMContentLoaded', function() { // este espera a que se descargue solamente el HTML
-    console.log(4);
-});
+
+const nombre = document.querySelector('#nombre');
+const email = document.querySelector('#email');
+const mensaje = document.querySelector('#mensaje');
 
 
-console.log(5);
+nombre.addEventListener('input', leerTexto);
+email.addEventListener('input', leerTexto);
+mensaje.addEventListener('input', leerTexto);
 
-window.onscroll = function() {
-    console.log('scrolling...');
+function leerTexto(e){
+    console.log(e.target.value);
+
+    datos[e.target.id] = e.target.value;
+
+    console.log(datos);
 }
+
+
