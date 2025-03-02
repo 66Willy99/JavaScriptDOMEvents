@@ -32,3 +32,24 @@ const navegacion = document.querySelector('.navegacion');
 navegacion.appendChild(nuevoEnlace);
 
 console.log(nuevoEnlace);
+
+// Eventos
+
+console.log(1);
+window.addEventListener('load', function() { // este espera a que se descargue todo
+    console.log(2);
+});
+
+window.onload = function() {
+    console.log(3);
+}
+document.addEventListener('DOMContentLoaded', function() { // este espera a que se descargue solamente el HTML
+    console.log(4);
+});
+
+
+console.log(5);
+
+window.onscroll = function() {
+    console.log('scrolling...');
+}
